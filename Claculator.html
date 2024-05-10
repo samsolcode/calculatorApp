@@ -4,46 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator_project</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            /* margin:0, auto; */
+            background-color: rgba(217, 224, 197, 0.438); 
+        }
+        .wrapper{
+            /* margin:12em 15em; */
+            border: 1px solid #cccccc;
+
+box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+
+border-radius: 20px;
+
+position: absolute;
+
+top: 45%;
+
+left: 50%;
+
+transform: translate(-50%, -50%);
+
+width: 450px;
+
+height: 550px;
+        }
+        .screen{
+
+background-color:rgb(75, 105, 112);
+
+justify-content: left;
+
+color: black;
+
+font-size:medium;
+
+width: 85%;
+
+height: 30%;
+
+cursor: default;
+padding: 10px; 
+border-radius: 8px;
+/* padding-top: 40%; */
+
+margin: auto;
+
+margin-bottom: 10px;
+
+}
+ .display{
+    width:100%;
+    height:145px;
+    border:none;
+    border-radius: 13px;
+    font-weight: 300;
+    font-size:80px;
+} 
+.keys {
+
+display: grid;
+
+grid-template-columns: repeat(4, 1fr);
+
+grid-gap: 10px;
+
+padding: 10px;
+
+margin:auto;
+
+}
+
+.button {
+
+height: 60px;
+
+padding: 5px;
+
+background-color: #fff;
+
+border-radius: 3px;
+
+border: 1px solid #c4c4c4;
+
+background-color: transparent;
+
+font-size: 2rem;
+
+color: #333;
+
+background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0,0,0,.04));
+
+box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
+
+text-shadow: 0 1px rgba(255,255,255,.4);
+
+}
+
+.button:hover {
+
+background-color: #eaeaea;
+
+}
+
+.operator {
+
+color: #fff;
+
+background-color: #508f16;
+
+}
+    </style>
 </head>
 <body>
+    <div class="wrapper">
     <div class="screen">
-        <input type="text" name="display" id="screen" >
+        <input type="text" class="display" name="display" id="screen" >
     </div>
     <div class="keys">
     <br>
-        <input type="button" class="button" value="AC" onclick="display('AC')">
-        <input type="button" class="button" value="C" onclick="display('C')">
-        <input type="button" value="%" class="operator" onclick="display('%')">
+        <input type="button" class="button" value="AC" onclick="clearScreen('')">
+        <input type="button" class="button" value="C" onclick="clearScreen('')">
+        <input type="button" value="%" class="operator" onclick="display('')">
         <input type="button" class="operator" value="/" onclick="display('/')">
-        <br>
+        <!-- <br> -->
         <input type="button" class="button" value="7" onclick="display('7')">
         <input type="button" class="button" value="8" onclick="display('8')">
         <input type="button" class="button" value="9" onclick="display('9')">
         <input type="button" class="operator" value="*" onclick="display('*')">
-        <br>
+        <!-- <br> -->
         <input type="button" class="button" value="4" onclick="display('4')">
         <input type="button" class="button" value="5" onclick="display('5')">
         <input type="button" class="button" value="6" onclick="display('6')">
         <input type="button" class="operator" value="-" onclick="display('-')">
-        <br>
+        <!-- <br> -->
         <input type="button" class="button" value="1" onclick="display('1')">
         <input type="button" class="button" value="2" onclick="display('2')">
         <input type="button" class="button" value="3" onclick="display('3')">
-        <input type="button" class="button" value="+" onclick="display('+')">
-        <br>
+        <input type="button" class="operator" value="=" onclick="solve()">
+        <input type="button" class="operator" value="+" onclick="display('+')">
         <input type="button" class="button" value="00" onclick="display('00')">
         <input type="button" class="button" value="0" onclick="display('0')">
         
-        <input type="button" class="operator" value="=" onclick="solve()">
+        
     </div>
 
 
-
+</div>
+</body>
 <script>
     function display(calc){
         document.getElementById('screen').value += calc
 
         return calc;
     }
+
+    function solve(){
+
+        let x = document.getElementById('screen').value
+
+        let y = eval(x);
+
+        document.getElementById('screen').value = y
+
+        return y
+
+    }
+
+    function clearScreen(){
+
+        document.getElementById('screen').value =''
+
+    }
+
+
 </script>
 </html>
